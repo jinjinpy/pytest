@@ -3,6 +3,9 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import telepot
+import os
+
+access_token = os.environ["BOT_TOKEN"]
 
 with urlopen('https://www.jbnu.ac.kr/kor/?menuID=139&pno=1') as response:
     soup = BeautifulSoup(response, 'html.parser')
@@ -11,9 +14,11 @@ with urlopen('https://www.jbnu.ac.kr/kor/?menuID=139&pno=1') as response:
         announcement = anchor.get_text(strip=True)
         data = '[' + str(i) + '] ' + announcement
         print(data)
-        bot = telepot.Bot('1161290144:AAFmL2S19FhgaQYzsD0QiovTSpW6E21tzxo')
+        bot = telepot.Bot(access_token)
         bot.sendMessage(1141765178, data)
         i += 1
+                          
+                          
         
 
 
