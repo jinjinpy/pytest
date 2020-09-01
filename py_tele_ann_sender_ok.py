@@ -1,9 +1,10 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import telepot
-import os
+#import os
 
-access_token = os.environ["BOT_TOKEN"]
+access_token = '1336751738:AAGYLFLDIzXARTkti1KuhmQPizrGDbph0oM'
+#os.environ["BOT_TOKEN"]
 mc = '1141765178'
 bot = telepot.Bot(token)
 
