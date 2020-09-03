@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import telepot
+import os
 
-token = '1260153931:AAFr3M2fTUIhRJDSj82nnw-3vfhwQ0fPNpE'
-mc = '1141765178'
-bot = telepot.Bot(token)
+access_token = os.environ["BOT_TOKEN"]
+bot = telepot.Bot(access_token)
 
 def handle(msg):
     with urlopen('https://www.jbnu.ac.kr/kor/?menuID=139&pno=1') as response:
@@ -15,7 +15,7 @@ def handle(msg):
             if not announcement.find(msg['text']) == -1:
                 data = '[' + str(i) + '] ' + announcement
                 print(data)
-                bot = telepot.Bot(token)
+                bot = telepot.Bot(access_token)
                 bot.sendMessage(msg['from']['id'], data)
                 i = i + 1
 bot.message_loop(handle)
